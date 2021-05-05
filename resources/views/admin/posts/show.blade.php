@@ -45,6 +45,8 @@
       <th scope="col">Title</th>
       <th scope="col">Slug</th>
       <th scope="col">Subtitle</th>
+      <th scope="col">Comments</th>
+      <th scope="col">Views</th>
       <th scope="col">Actions</th>
 
 
@@ -58,6 +60,9 @@
       <td>{{$post->title}}</td>
       <td>{{$post->slug}}</td>
       <td>{{$post->subtitle}}</td>
+      <td class="text-center">{{$post->comments->count()}}</td>
+      <td class="text-center">{{$post->view_count}}</td>
+
 
       <td>
         @can('posts.update', Auth::user())

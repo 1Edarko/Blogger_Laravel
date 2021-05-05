@@ -1,13 +1,12 @@
 @extends('Master')
 
-@include('layouts.navbar_auth')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8 mt-4">
+        <div class="col-md-8 mt-4 register_container">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header text-center"> <a class="navbar-brand" href="{{route('blog.home')}}"><span class="logo">Bridge</span></a></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
@@ -82,10 +81,17 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="register-btn">
                                     {{ __('Register') }}
                                 </button>
+                                
                             </div>
+                            <div class="forward">
+                                <a class="btn btn-link forward-login" href="{{ route('login') }}">
+                                {{ __('Already Have an Account ?') }}
+                            </a></div>
+                            
+                           
                         </div>
                     </form>
                 </div>

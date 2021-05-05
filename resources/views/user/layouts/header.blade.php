@@ -5,13 +5,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
   
-    <title>Blogger</title>
+    <title>Bridge</title>
   
     <!-- Bootstrap core CSS -->
     <link href="{{asset('User/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
   
     <!-- Custom fonts for this template -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="{{asset('User/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>

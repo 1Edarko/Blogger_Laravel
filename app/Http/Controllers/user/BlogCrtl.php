@@ -14,7 +14,7 @@ class BlogCrtl extends Controller
 
     public function home(){
 
-        $posts = Post::where('status' ,1)->get();
+        $posts = Post::where('status' ,1)->paginate(4);
         $Popular_Posts = Post::OrderBy('view_count', 'DESC')->take(3)->get();
        $labels = Tag::all()->random(5);
 
@@ -27,6 +27,7 @@ class BlogCrtl extends Controller
    $latest_posts = Post::orderBy('created_at', 'desc')->take(3)->get();
 
    $postKey = 'Post' . $post->id;
+
    if(!Session::has($postKey)){
        $post->increment('view_count');
        Session::put($postKey , 1);

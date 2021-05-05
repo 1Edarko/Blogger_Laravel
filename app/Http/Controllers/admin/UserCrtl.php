@@ -132,22 +132,27 @@ class UserCrtl extends Controller
 
             'name' => 'required',
             'email' =>'required',
-            'password' =>'required',
+            'password' =>'required|confirmed',
             'phone' =>'required',
-            'job '=> 'required',
-            'about_me' =>'required',
+            
 
          ]);
+
+         $user = Admin::find($id);
+
 
          if($request->hasFile('user_image')){
             $r_image = $request->file('user_image');
             $user_image = time(). '.' . $r_image->getClientOriginalExtension();
             $path = public_path('admin/users_imgs');
             $r_image->move($path ,$user_image);
+
+            $user->update([
+                'user_image' => $user_image,
+            ]);
  
         }
 
-         $user = Admin::find($id);
 
           $user->update([
 
@@ -155,9 +160,7 @@ class UserCrtl extends Controller
             'email' =>$request->email,
             'password' => Hash::make($request->password),
             'phone' =>$request->phone,
-        //     'job' => $request->job,
-        //     'user_image' => $user_image,
-        //    'about_me' => $request->about_me,
+      
 
 
 

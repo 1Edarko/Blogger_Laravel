@@ -3,9 +3,14 @@
 
   @section('content')
   <div class="content-wrapper">
-    @if(Session::has('update'))
+    @if(Session::has('success'))
     <div class="alert alert-success">
-        {{Session::get('update')}}
+        {{Session::get('success')}}
+    </div>
+    @endif
+    @if(Session::has('error'))
+    <div class="alert alert-danger">
+        {{Session::get('error')}}
     </div>
     @endif
     <!-- Content Header (Page header) -->
@@ -110,22 +115,31 @@
                       </div>
                     </form>
                   </div>
+                </form>
                   {{-- paswword --}}
+            
                   <div class="tab-pane" id="Password">
+                    <form action="{{route('user.password.update')}}" method="POST" enctype="multipart/form-data">
+                      @csrf
+                      @method('PUT')
                     <form class="form-horizontal">
                       <div class="form-group row">
                         <label for="paswword" class="col-sm-2 col-form-label">Old Password</label>
                         <div class="col-sm-10">
                           <input type="password" class="form-control" name="old_password" id="inputName2" placeholder="Your Old Password">
-
+                          @error('old_password')
+                          <span class="text-danger">{{$message}}</span>
+                      @enderror
                         </div>
                       </div>
                       
                       <div class="form-group row">
-                        <label for="paswword" class="col-sm-2 col-form-label">Password</label>
+                        <label for="paswword" class="col-sm-2 col-form-label">New Password</label>
                         <div class="col-sm-10">
-                          <input type="password" class="form-control" name="password" id="inputName2" placeholder="Your Password">
-
+                          <input type="password" class="form-control" name="password" id="inputName2" placeholder="Your New Password">
+                          @error('password')
+                          <span class="text-danger">{{$message}}</span>
+                      @enderror
                         </div>
                       </div>
                       <div class="form-group row">
@@ -141,17 +155,18 @@
                      
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
-                          <button type="submit" class="btn btn-danger">Submit</button>
+                          <button type="submit" class="btn btn-success">Submit</button>
                         </div>
                       </div>
                     </form>
+
                   
-                  </div>
-                  <!-- /.tab-pane -->
                 </div>
+                </div>
+
+                  <!-- /.tab-pane -->
                 <!-- /.tab-content -->
               </div><!-- /.card-body -->
-            </form>
             </div>
             <!-- /.card -->
           </div>

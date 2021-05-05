@@ -101,6 +101,32 @@
 
       
       <hr>
+      @guest
+     <span class="attention">You Need Login To Comment The Post!</span>          
+      @else
+      <h4 class="mt-3">leave A Reply</h4>
+
+      <div class="col-md-8 mt-3">
+    
+           <form action="{{route('comments.store' , $post->id)}}" method="POST">
+             @csrf
+             <input type="hidden" name="post_id" value="{{$post->id}}">
+             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+
+          <div class="form-group">
+
+            <textarea name="body" placeholder="Your Comment here......." class="form-control"></textarea>
+
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-primary" style="width: 145px;height: 49px;font-size: 10px;">Add Comment</button>
+          </div>
+
+
+        </form>
+        </div>
+        @endguest
 
 
       <div class="d-flex justify-content-center row">
@@ -129,30 +155,10 @@
         <hr>
         @endforeach
       </div>
+     
 
       
-      <h4 class="mt-3">leave A Reply</h4>
-
-      <div class="col-md-8 mt-3">
-    
-           <form action="{{route('comments.store' , $post->id)}}" method="POST">
-             @csrf
-             <input type="hidden" name="post_id" value="{{$post->id}}">
-             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-
-          <div class="form-group">
-
-            <textarea name="body" placeholder="Your Comment here......." class="form-control"></textarea>
-
-          </div>
-
-          <div class="form-group">
-            <button class="btn btn-primary">Add Comment</button>
-          </div>
-
-
-        </form>
-        </div>
+      
 
 
   </article>
@@ -176,5 +182,100 @@
 
   });
 </script>
+    
+@endsection
+
+@section('Footer')
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer">
+      <div class="row">
+        <div class="col-lg-4">
+          <form class="form-inline ml-3">
+            <div class="input-group input-group-sm">
+              <input class="form-control search" type="search" placeholder="Search" aria-label="Search">
+              <div class="input-group-append" style="margin-left: -29px;">
+                <button class="btn btn-navbar" type="submit">
+                  <i class="fas fa-search" style="color: #fff"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+        
+
+        <div class="col-lg-4">
+          <h4>Blog Menu</h4>
+          <ul style="padding-left: 0">
+            <li>
+              <a class="nav-link footer-links" href="index.html"><i class="fas fa-chevron-right mr-2"></i>Home</a>
+            </li>
+            <li>
+              <a class="nav-link footer-links" href="index.html"><i class="fas fa-chevron-right mr-2"></i>About Us</a>
+            </li> <li>
+              <a class="nav-link footer-links" href="index.html"><i class="fas fa-chevron-right mr-2"></i>Contact Us</a>
+            </li>
+            @guest
+            <li>
+              <a class="nav-link footer-links" href="index.html"><i class="fas fa-chevron-right mr-2"></i>Login</a>
+            </li> <li>
+              <a class="nav-link footer-links" href="index.html"><i class="fas fa-chevron-right mr-2"></i>Register</a>
+            </li>
+            @else
+                
+            @endguest
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h4>About</h4>
+          <p>Bridge. it's a blog with a special design by Mohamed Elhadi,contains great articles , easy to read them , fast reloading pages , Responsivity with all screen sizes.
+          </p>
+        </div>
+
+
+
+
+        <div class="col-lg-8 col-md-10 mx-auto f-icons">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a  class="twitter" href="https://mobile.twitter.com/ElhadiM47942706">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a  class="linkedin" href="https://mobile.twitter.com/ElhadiM47942706">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a  class="facebook"href="https://www.facebook.com/mohamed.elhadi.39589/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a class="github" href="https://github.com/1Elhadi/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Bridge 2021</p>
+        </div>
+      </div>
+    </div>
+  </footer>
     
 @endsection

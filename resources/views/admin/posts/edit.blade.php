@@ -31,13 +31,15 @@
       <div class="row">
 
         <div class="col-md-6">
-        <form action="{{route('posts.update' , $post->id)}}" enctype="multipart/form-data">
+        <form action="{{route('posts.update' , $post->id)}}" method="POST" multipart/form-data">
           @csrf
           @method('PUT')
 
               <div class="form-group">
                 <label for="exampleInputEmail1">Title</label>
                 <input type="text" class="form-control" name="title" value="{{$post->title}}" placeholder="Post title......">
+                <input id="title" type="text" class="form-control"name="subtitle"  placeholder=" Post subtitle.....">
+                Characters Left : <span id="characters"></span>
               </div>
             </div>
             <div class="col-md-6">
@@ -46,6 +48,8 @@
               <div class="form-group">
                 <label for="exampleInputPassword1">Subtitle</label>
                 <input type="text" class="form-control"name="subtitle" value="{{$post->subtitle}}" placeholder=" Post subtitle.....">
+                <input id="subtitle" type="text" class="form-control"name="subtitle"  placeholder=" Post subtitle.....">
+                Characters Left : <span id="sub-characters"></span>
               </div>
             </div>
       </div>
@@ -165,5 +169,34 @@
       </div>
     </section>
             
+    
+@endsection
+
+@section('script')
+<script>
+  function calc(value , element1, element2){
+
+    var title = document.getElementById(element1);
+var char = document.getElementById(element2);
+
+title.onkeyup = function(){
+    'use strict';
+    char.textContent = value - this.value.length;
+    
+
+
+    char.textContent < 0 ? char.style.color = "#dc3545" : char.style.color = "#000"
+
+    
+
+}
+
+
+  }
+
+  calc(85 , 'title' , 'characters');
+  calc(100 , 'subtitle' , 'sub-characters');
+
+</script>
     
 @endsection

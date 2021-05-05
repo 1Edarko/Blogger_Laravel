@@ -75,8 +75,9 @@
             </div>
   
             </div>
+            <div class="row">
 
-            <div class="col-md-3">
+            <div class="col-md-12">
 
               <div class="form-group">
                 <label for="exampleInputPassword1">Confirm Password</label>
@@ -85,6 +86,7 @@
               </div>
     
               </div>
+            </div>
 
             
         

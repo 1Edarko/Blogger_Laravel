@@ -52,7 +52,7 @@
       </div>   
       <div class="row justify-content-center">
 
-        <div class="col-md-4">
+        <div class="col-md-3">
 
           <div class="form-group">
             <label for="phone">Phone Number</label>
@@ -64,7 +64,7 @@
 
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-3">
 
             <div class="form-group">
               <label for="exampleInputPassword1">Password</label>
@@ -75,6 +75,18 @@
             </div>
   
             </div>
+            <div class="row">
+
+              <div class="col-md-12">
+  
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Confirm Password</label>
+                  <input type="password" class="form-control"name="password_confirmation"  placeholder=" Confirm Your password.....">
+                  
+                </div>
+      
+                </div>
+              </div>
 
             
         
@@ -82,7 +94,7 @@
     
 
       <div class="row justify-content-center">
-        <div class="col-md-4">
+        <div class="col-md-8">
           <div class="form-group">
             <label for="exampleInputFile">Profile Picture</label>
             <div class="input-group">
@@ -97,31 +109,10 @@
             </div>
         </div>
         </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <label for="job">Job Title</label>
-            <input type="text" class="form-control" name="job" value="{{$user->job}}"  placeholder="Enter your Job">
-            @error('job')
-            <span class="text-danger">{{$message}}</span>
-        @enderror
-          </div>
-        </div>
+       
         
       </div>
-      <div class="row justify-content-center">
-
-        <div class="col-md-8">
-          <div class="form-group">
-
-          <label>Description</label>
-
-        <input  type='text' class="form-control" name="about_me" value="{{$user->about_me}}"  style="height: 100px; padding-bottom: 59px;" placeholder="Talk About Yourself..."></input>
-          </div>   
-        </div>
-
-
-        
-      </div>
+    
         <div class="row justify-content-center">
 
         <div class="col-md-8">

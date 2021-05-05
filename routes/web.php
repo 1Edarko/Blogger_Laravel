@@ -57,7 +57,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'],function(){
 
     Route::get('dashboard',[DashboardCrtl::class ,'index'])->name('admin.dashboard');
     Route::get('profile',[ProfileCrtl::class ,'index'])->name('admin.profile');
-    Route::put('profile/update',[ProfileCrtl::class ,'update'])->name('profile.update');
+    Route::put('profile/update',[ProfileCrtl::class ,'Info_update'])->name('profile.update');
+    Route::put('password/update',[ProfileCrtl::class ,'Password_update'])->name('user.password.update');
 
 
 

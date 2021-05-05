@@ -14,7 +14,7 @@
 
 </body>
 
-@include('user.layouts.Footer')
+@yield('Footer')
 
 
 

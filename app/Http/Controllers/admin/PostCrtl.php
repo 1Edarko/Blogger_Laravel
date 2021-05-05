@@ -61,12 +61,13 @@ class PostCrtl extends Controller
 
         $request->validate([
 
-            'title' => 'required',
+            'title' => 'required|max:85',
             'slug' =>'required',
-            'subtitle' =>'required',
+            'subtitle' =>'required|max:100',
             'body' =>'required',
             'image' => 'required',
-
+            'ft_image'=>'mimes:jpg,png,jpeg|dimensions:min_width=300,min_height=300,max_width=1200,max_height=1000'
+,
          ]);
 
          if($request->hasFile('image')){
@@ -116,12 +117,7 @@ class PostCrtl extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function show($slug)
-    // {
-    //     $show_posts = Post::where('slug',$slug)->first();
-    //     return view('admin.posts.index' ,compact('show_posts'));
-
-    // }
+   
 
     /**
      * Show the form for editing the specified resource.
@@ -160,12 +156,14 @@ class PostCrtl extends Controller
 
         $request->validate([
 
-            'title' => 'required',
+            'title' => 'required|max:85',
             'slug' =>'required',
-            'subtitle' =>'required',
+            'subtitle' =>'required|max:100',
             'body' =>'required',
             
          ]);
+         $post = Post::find($id);
+
 
 
 
@@ -174,6 +172,12 @@ class PostCrtl extends Controller
             $image = time(). '.' . $r_image->getClientOriginalExtension();
             $path = public_path('images');
             $r_image->move($path ,$image);
+            $post->update([
+                
+                'image' => $image,
+    
+            
+            ]);
  
         }
         if($request->hasFile('ft_image')){
@@ -181,18 +185,22 @@ class PostCrtl extends Controller
             $ft_image = time(). '.' . $p_image->getClientOriginalExtension();
             $path = public_path('ft_images');
             $p_image->move($path ,$ft_image);
+            $post->update([
+              
+                'ft_image' =>$ft_image,
+    
+            
+            ]);
  
         }
 
-        $post = Post::find($id);
           $post->update([
             'title' =>$request->title,
             'slug' => $request->slug,
             'subtitle' => $request->subtitle,
             'body' => $request->body,
             'status'=>$request->status,
-            'image' => $image,
-            'ft_image' =>$ft_image,
+            
 
         
         ]);
@@ -231,7 +239,7 @@ class PostCrtl extends Controller
         return redirect()->back();
     }
 
-    public function likes($like){
-        return $like;
-    }
+    // public function likes($like){
+    //     return $like;
+    // }
 }
