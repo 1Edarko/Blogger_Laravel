@@ -1,4 +1,6 @@
 @extends('Master')
+@include('user.layouts.loader')
+
 
 @include('user.layouts.navbar')
 
@@ -19,6 +21,8 @@
     
 
 @section('content')
+
+
 <!-- Post Content -->
 <article>
     <div class="container">

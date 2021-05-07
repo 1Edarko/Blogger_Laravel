@@ -2,6 +2,8 @@
 @section('bg-img' , asset('User/img/blog-bg.jpg'))
 @section('p-title' , 'Welcome To The Bridge')
 @section('p-sub' , 'Every Day Blogs , Every Day Reading')
+@include('user.layouts.loader')
+
 
 
 @include('user.layouts.navbar')
@@ -19,6 +21,8 @@
 
 
 @section('content')
+
+
 <!-- Main Content -->
 <div class="container">
 
